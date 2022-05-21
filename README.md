@@ -1,6 +1,4 @@
-The project made for university. The idea of project was to make the Spotify clone.
-
-You have to download all the necessary NutGet packages before using it. 
+The project was made for the university. The idea of project was to make a Spotify clone. 
 
 All the routes are described in Controllers. 
 
