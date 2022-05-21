@@ -1,0 +1,43 @@
+﻿<header class="header-section clearfix">
+	<a href=@Url.Action("Index", "Home") class="site-logo"> 
+		<img src="@Url.Content("~/Content/img/logo.png")" alt="Logo"/>
+	</a>
+	<div class="header-right">
+		<div class="user-panel">
+			@Html.ActionLink("Login", "SignIn", "Login", null, new {@class = "login"})
+
+			@Html.ActionLink("Create an account", "SignUp", "Login", null, new {@class = "register"})
+
+            @using (Html.BeginForm("LogOut", "Login")) {
+
+                <button class="btn" type="submit" id="btnLogOut" value="LogOut" style="color: #fff">Log Out</button>
+            }
+        </div>
+	</div>
+	<ul class="main-menu">
+		<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+			@Html.ActionLink("Home", "Index", "Home")
+		</li>
+	
+		<li>
+			<a href="#">Pages</a>
+            <ul class="sub-menu">
+	            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+		            @Html.ActionLink("Category", "Category", "Pages")
+	            </li>
+				
+	            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                    @Html.ActionLink("Albums", "Albums", "Album")
+                </li>
+				
+	            <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                    @Html.ActionLink("Artists", "Artists", "Artist")
+                </li>
+            </ul>
+		</li>
+		
+		<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+			@Html.ActionLink("News", "News", "Home")
+		</li>
+	</ul>
+</header>

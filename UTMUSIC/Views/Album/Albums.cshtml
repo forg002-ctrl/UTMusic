@@ -1,0 +1,69 @@
+﻿@model List<UTMUSIC.Web.Models.AlbumData>
+
+@{
+    ViewBag.Title = "Artists";
+}
+
+<div class="container-fluid">
+    <div class="container">
+        <br />
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-lg-4">
+                <div class="row">
+                    @using (Html.BeginForm("Albums", "Album", FormMethod.Post))
+                    {
+                        <input class="form-control" type="text" name="searchLine" placeholder="Search" aria-label="Search">
+                    }
+                </div>
+            </div>
+            <!--end of col-->
+        </div>
+    </div>
+    @if (Model.Count == 0)
+    {
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4">
+                        <div class="square-fill"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h7>
+                        There isn't any artist with such name
+                    </h7>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-lg-4">
+                    <div class="square-fill"></div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        for (int i = 0; i < (float)Model.Count / 4; ++i)
+        {
+            <div class="row">
+                @for (int j = 0; j < 4; ++j)
+                {
+                    <div class="col-md-3">
+                        <div class="artists-details">
+                            <img src="@Url.Content(Model[i * 4 + j].PhotoPath)" alt="">
+                            <div class="ci-text">
+                                <h4>
+                                    @Html.ActionLink(Model[i * 4 + j].Name, "Details", "Album", new { id = Model[i * 4 + j].Id }, null)
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    if (Model[i * 4 + j] == Model.Last())
+                    {
+                        break;
+                    }
+                }
+            </div>
+        }
+    }
+</div>

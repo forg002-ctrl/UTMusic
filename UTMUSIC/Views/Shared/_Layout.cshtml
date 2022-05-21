@@ -1,0 +1,58 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UTMusic @ViewBag.Title</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="SolMusic HTML Template">
+	<meta name="keywords" content="music, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="`sheet">
+    
+	<link href = "@Url.Content("~/Content/img/smlogo.ico")" rel="shortcut icon"/>
+
+
+	<!-- Stylesheets -->
+	@Styles.Render("~/bundles/bootstrap/css")
+	@Styles.Render("~/bundles/font-awesome/css")
+	@Styles.Render("~/bundles/owl.carousel/css")
+	@Styles.Render("~/bundles/slicknav/css")
+
+	@if (IsSectionDefined("Styles"))
+
+	{@RenderSection("Styles", required: false)}
+
+	<!-- Main Stylesheets -->
+	@Styles.Render("~/bundles/main/css")
+</head>
+<body>
+    <!-- Page Preloder -->
+    @Html.Partial("_Preloader")
+
+
+    <!-- Header section -->
+    @Html.Partial("_Header")
+    <!-- Header section end -->
+    <!-- Main section -->
+    @RenderBody()
+    <!-- Main section end -->
+    <!-- Footer section -->
+    @Html.Partial("_Footer")
+    <!-- Footer section end -->
+    <!--====== Javascripts & Jquery ======-->
+    @Scripts.Render("~/bundles/mixitup/js")
+    @Scripts.Render("~/bundles/jquery/js")
+    @Scripts.Render("~/bundles/jquery-plagins/js")
+    @Scripts.Render("~/bundles/owl.carousel/js")
+    @Scripts.Render("~/bundles/bootstrap/js")
+    @Scripts.Render("~/bundles/main/js")
+
+
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

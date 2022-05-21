@@ -1,0 +1,609 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\WavesurferBlazorWrapper.0.1.1\build\WavesurferBlazorWrapper.props" Condition="Exists('..\packages\WavesurferBlazorWrapper.0.1.1\build\WavesurferBlazorWrapper.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{34A59FE0-87A4-4253-A4E8-83FE0F6CB618}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UTMUSIC</RootNamespace>
+    <AssemblyName>UTMUSIC</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac, Version=6.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.6.3.0\lib\netstandard2.0\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=6.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.6.0.0\lib\net472\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=6.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.6.1.0\lib\net472\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.8\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.8\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.8\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.8\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.8\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.8\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.8\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.8\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.8\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DbData\Rap\Loqiemean\about_artist.txt" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\front.jpg" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Апельсиновый сок.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Батя нации.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Гуманизм.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Лопасти.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Нежнее стать.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Но.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Одинокий каннибал.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Озоновый слой.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Олонхо.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Трубка мира.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Удочка для охоты.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Фауст.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean - Я жду зла.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean feat. IAN HOPELESS, Sam - Кровь.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Контроль [Dropmp3.me]\Loqiemean feat. Tatyana Shmayluk - Хоровод.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\front.jpg" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - В Полупустой Хате.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Влитой.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Год Сна.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Горько.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - День, Который Не Придет.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Жи_ой.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Западня.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Зомби Надо Хоронить.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Из Го_на и Палок.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Когда Меня Заберут.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Ла_ина.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Лирический Герой.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Лоботомия.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Петля.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Проще .mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - С_оё Лицо.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Солнечная Сторона.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Стекло.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Хороший Мальчик.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean - Шум.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Сожги Этот Альбом LP [Dropmp3.ru]\Loqiemean feat. Маша Hima - Не Монстр.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Черная метка [Dropmp3.me]\front.jpg" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Черная метка [Dropmp3.me]\Loqiemean - Белый работяга.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Черная метка [Dropmp3.me]\Loqiemean - Вудпекер.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Черная метка [Dropmp3.me]\Loqiemean - Метаморфоза.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Черная метка [Dropmp3.me]\Loqiemean - Прорубь.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Черная метка [Dropmp3.me]\Loqiemean - Рагнарёк.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Черная метка [Dropmp3.me]\Loqiemean - Театр.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\albums\Loqiemean - Черная метка [Dropmp3.me]\Loqiemean feat. КУОК - Жарко.mp3" />
+    <Content Include="Content\DbData\Rap\Loqiemean\photo.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\01. Восточный Мордор.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\02. Тентакли.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\03. Спонтанное самовозгорание.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\04. CCTV.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\05. До сих пор MC.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\06. Привет со дна feat. Dom!no.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\07. Вечный жид.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\08. В бульбуляторе.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\09. Судьба моралиста.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\10. Цифры и цвета.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\11. Russky Cockney.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\12. В говне.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\13. Крокодиловы слёзы.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\14. Жук в муравейнике feat. Schokk.mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\Covers\Back+Front.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\Covers\Back.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\Covers\CD.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\Covers\Front.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\Covers\Inside+Inlay.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Вечный жид\Front.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\01 Не с начала [rap-game.ru].mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\02 Кем ты стал [rap-game.ru].mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\03 Всего лишь писатель [rap-game.ru].mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\04 Девочка Пиздец [rap-game.ru].mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\05 Переплетено [rap-game.ru].mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\06 Колыбельная [rap-game.ru].mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\07 Полигон [rap-game.ru].mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\08 Накануне [rap-game.ru].mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\09 Слово мэра [rap-game.ru].mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\10 Башня из слоновой кости [rap-game.ru].mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\11 Где нас нет [rap-game.ru].mp3" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\AlbumArtSmall.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\AlbumArt_{B5020207-474E-4720-6DDE-1717EA16F300}_Large.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\AlbumArt_{B5020207-474E-4720-6DDE-1717EA16F300}_Small.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\Back [rap-game.ru].png" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\Cover [rap-game.ru].png" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\Folder.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Горгород\font.png" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\AlbumArtSmall.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\AlbumArt_{B5020207-474E-4720-15B2-5366A62D0400}_Large.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\AlbumArt_{B5020207-474E-4720-15B2-5366A62D0400}_Small.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Folder.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\font.jpg" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Агент - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Африканские бусы - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Грязь - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Дрейдл - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Красота и Уродство - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Лифт - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Мы все умрем - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Намешано - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Непрожитая жизнь - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Нон-фикшн - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Окно в Париж - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Пантеллерия - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Партизанское радио - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Празднуй - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Рашн Роуд Рейдж - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Рецензия - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Тень - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Улет - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Хоп-механика - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Чувствую - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Эминем - Oxxxymiron.m4a" />
+    <Content Include="Content\DbData\Rap\Oxxxymiron\albums\Красота и Уродство\Эспрессо Тоник - Oxxxymiron.m4a" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\img\artist.jpg" />
+    <Content Include="Content\img\blog\1.jpg" />
+    <Content Include="Content\img\blog\2.jpg" />
+    <Content Include="Content\img\blog\3.jpg" />
+    <Content Include="Content\img\concept\1.jpg" />
+    <Content Include="Content\img\concept\2.jpg" />
+    <Content Include="Content\img\concept\3.jpg" />
+    <Content Include="Content\img\concept\4.jpg" />
+    <Content Include="Content\img\genres\classical.jpg" />
+    <Content Include="Content\img\genres\classical_1.jpg" />
+    <Content Include="Content\img\genres\country.jpg" />
+    <Content Include="Content\img\genres\country_1.jpg" />
+    <Content Include="Content\img\genres\jazz.jpg" />
+    <Content Include="Content\img\genres\jazz_1.jpg" />
+    <Content Include="Content\img\genres\pop.jpg" />
+    <Content Include="Content\img\genres\pop_1.jpg" />
+    <Content Include="Content\img\genres\rap.jpg" />
+    <Content Include="Content\img\genres\rap_1.jpg" />
+    <Content Include="Content\img\genres\rock_1.jpg" />
+    <Content Include="Content\img\genres\roсk.jpg" />
+    <Content Include="Content\img\hero-bg.png" />
+    <Content Include="Content\img\how-to-bg.jpg" />
+    <Content Include="Content\img\icons\add_music.png" />
+    <Content Include="Content\img\icons\back.png" />
+    <Content Include="Content\img\icons\check-icon.png" />
+    <Content Include="Content\img\icons\listen_to_music.png" />
+    <Content Include="Content\img\icons\login.png" />
+    <Content Include="Content\img\icons\next.png" />
+    <Content Include="Content\img\icons\p-1-1.png" />
+    <Content Include="Content\img\icons\p-1.png" />
+    <Content Include="Content\img\icons\p-2-1.png" />
+    <Content Include="Content\img\icons\p-2.png" />
+    <Content Include="Content\img\icons\pause.png" />
+    <Content Include="Content\img\icons\play.png" />
+    <Content Include="Content\img\login_register\email.jpg" />
+    <Content Include="Content\img\login_register\password.png" />
+    <Content Include="Content\img\login_register\username.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\player-bg.jpg" />
+    <Content Include="Content\img\playlist\1.jpg" />
+    <Content Include="Content\img\playlist\10.jpg" />
+    <Content Include="Content\img\playlist\11.jpg" />
+    <Content Include="Content\img\playlist\12.jpg" />
+    <Content Include="Content\img\playlist\13.jpg" />
+    <Content Include="Content\img\playlist\14.jpg" />
+    <Content Include="Content\img\playlist\15.jpg" />
+    <Content Include="Content\img\playlist\2.jpg" />
+    <Content Include="Content\img\playlist\3.jpg" />
+    <Content Include="Content\img\playlist\4.jpg" />
+    <Content Include="Content\img\playlist\5.jpg" />
+    <Content Include="Content\img\playlist\6.jpg" />
+    <Content Include="Content\img\playlist\7.jpg" />
+    <Content Include="Content\img\playlist\8.jpg" />
+    <Content Include="Content\img\playlist\9.jpg" />
+    <Content Include="Content\img\premium\1.jpg" />
+    <Content Include="Content\img\premium\2.jpg" />
+    <Content Include="Content\img\premium\3.jpg" />
+    <Content Include="Content\img\premium\4.jpg" />
+    <Content Include="Content\img\smlogo.ico" />
+    <Content Include="Content\img\songs\1.jpg" />
+    <Content Include="Content\img\songs\2.jpg" />
+    <Content Include="Content\img\songs\3.jpg" />
+    <Content Include="Content\img\songs\4.jpg" />
+    <Content Include="Content\img\songs\5.jpg" />
+    <Content Include="Content\img\songs\6.jpg" />
+    <Content Include="Content\img\songs\7.jpg" />
+    <Content Include="Content\img\songs\8.jpg" />
+    <Content Include="Content\img\wave-thumb.jpg" />
+    <Content Include="Content\music-files\1.mp3" />
+    <Content Include="Content\music-files\2.mp3" />
+    <Content Include="Content\music-files\3.mp3" />
+    <Content Include="Content\music-files\4.mp3" />
+    <Content Include="Content\music-files\5.mp3" />
+    <Content Include="Content\music-files\6.mp3" />
+    <Content Include="Content\music-files\7.mp3" />
+    <Content Include="Content\music-files\8.mp3" />
+    <Content Include="Content\owl.carousel.min.css" />
+    <Content Include="Content\slicknav.min.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\bootstrap\bootstrap-grid.scss" />
+    <Content Include="Content\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="Content\bootstrap\bootstrap-utilities.scss" />
+    <Content Include="Content\bootstrap\bootstrap.scss" />
+    <Content Include="Content\bootstrap\forms\_floating-labels.scss" />
+    <Content Include="Content\bootstrap\forms\_form-check.scss" />
+    <Content Include="Content\bootstrap\forms\_form-control.scss" />
+    <Content Include="Content\bootstrap\forms\_form-range.scss" />
+    <Content Include="Content\bootstrap\forms\_form-select.scss" />
+    <Content Include="Content\bootstrap\forms\_form-text.scss" />
+    <Content Include="Content\bootstrap\forms\_input-group.scss" />
+    <Content Include="Content\bootstrap\forms\_labels.scss" />
+    <Content Include="Content\bootstrap\forms\_validation.scss" />
+    <Content Include="Content\bootstrap\helpers\_clearfix.scss" />
+    <Content Include="Content\bootstrap\helpers\_colored-links.scss" />
+    <Content Include="Content\bootstrap\helpers\_position.scss" />
+    <Content Include="Content\bootstrap\helpers\_ratio.scss" />
+    <Content Include="Content\bootstrap\helpers\_stacks.scss" />
+    <Content Include="Content\bootstrap\helpers\_stretched-link.scss" />
+    <Content Include="Content\bootstrap\helpers\_text-truncation.scss" />
+    <Content Include="Content\bootstrap\helpers\_visually-hidden.scss" />
+    <Content Include="Content\bootstrap\helpers\_vr.scss" />
+    <Content Include="Content\bootstrap\mixins\_alert.scss" />
+    <Content Include="Content\bootstrap\mixins\_backdrop.scss" />
+    <Content Include="Content\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Content\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="Content\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="Content\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Content\bootstrap\mixins\_caret.scss" />
+    <Content Include="Content\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Content\bootstrap\mixins\_color-scheme.scss" />
+    <Content Include="Content\bootstrap\mixins\_container.scss" />
+    <Content Include="Content\bootstrap\mixins\_deprecate.scss" />
+    <Content Include="Content\bootstrap\mixins\_forms.scss" />
+    <Content Include="Content\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Content\bootstrap\mixins\_grid.scss" />
+    <Content Include="Content\bootstrap\mixins\_image.scss" />
+    <Content Include="Content\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Content\bootstrap\mixins\_lists.scss" />
+    <Content Include="Content\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Content\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Content\bootstrap\mixins\_resize.scss" />
+    <Content Include="Content\bootstrap\mixins\_table-variants.scss" />
+    <Content Include="Content\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="Content\bootstrap\mixins\_transition.scss" />
+    <Content Include="Content\bootstrap\mixins\_utilities.scss" />
+    <Content Include="Content\bootstrap\mixins\_visually-hidden.scss" />
+    <Content Include="Content\bootstrap\utilities\_api.scss" />
+    <Content Include="Content\bootstrap\vendor\_rfs.scss" />
+    <Content Include="Content\bootstrap\_accordion.scss" />
+    <Content Include="Content\bootstrap\_alert.scss" />
+    <Content Include="Content\bootstrap\_badge.scss" />
+    <Content Include="Content\bootstrap\_breadcrumb.scss" />
+    <Content Include="Content\bootstrap\_button-group.scss" />
+    <Content Include="Content\bootstrap\_buttons.scss" />
+    <Content Include="Content\bootstrap\_card.scss" />
+    <Content Include="Content\bootstrap\_carousel.scss" />
+    <Content Include="Content\bootstrap\_close.scss" />
+    <Content Include="Content\bootstrap\_containers.scss" />
+    <Content Include="Content\bootstrap\_dropdown.scss" />
+    <Content Include="Content\bootstrap\_forms.scss" />
+    <Content Include="Content\bootstrap\_functions.scss" />
+    <Content Include="Content\bootstrap\_grid.scss" />
+    <Content Include="Content\bootstrap\_helpers.scss" />
+    <Content Include="Content\bootstrap\_images.scss" />
+    <Content Include="Content\bootstrap\_list-group.scss" />
+    <Content Include="Content\bootstrap\_mixins.scss" />
+    <Content Include="Content\bootstrap\_modal.scss" />
+    <Content Include="Content\bootstrap\_nav.scss" />
+    <Content Include="Content\bootstrap\_navbar.scss" />
+    <Content Include="Content\bootstrap\_offcanvas.scss" />
+    <Content Include="Content\bootstrap\_pagination.scss" />
+    <Content Include="Content\bootstrap\_placeholders.scss" />
+    <Content Include="Content\bootstrap\_popover.scss" />
+    <Content Include="Content\bootstrap\_progress.scss" />
+    <Content Include="Content\bootstrap\_reboot.scss" />
+    <Content Include="Content\bootstrap\_root.scss" />
+    <Content Include="Content\bootstrap\_spinners.scss" />
+    <Content Include="Content\bootstrap\_tables.scss" />
+    <Content Include="Content\bootstrap\_toasts.scss" />
+    <Content Include="Content\bootstrap\_tooltip.scss" />
+    <Content Include="Content\bootstrap\_transitions.scss" />
+    <Content Include="Content\bootstrap\_type.scss" />
+    <Content Include="Content\bootstrap\_utilities.scss" />
+    <Content Include="Content\bootstrap\_variables.scss" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Scripts\jplayerInit.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery.jplayer.min.js" />
+    <Content Include="Scripts\jquery.slicknav.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\mixitup.min.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionFilters\AdminModelAttribute.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\ContainerConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AlbumController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Infrastructure\AutoFacModule.cs" />
+    <Compile Include="Infrastructure\AutoMapperProfile.cs" />
+    <Compile Include="Controllers\ArtistController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PagesController.cs" />
+    <Compile Include="Controllers\SongController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AlbumData.cs" />
+    <Compile Include="Models\ArtistData.cs" />
+    <Compile Include="Models\SongData.cs" />
+    <Compile Include="Models\UserData.cs" />
+    <Compile Include="Models\UserLogin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <None Include="packages.config" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Preloader.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Login\SignIn.cshtml" />
+    <Content Include="Views\Login\SignUp.cshtml" />
+    <Content Include="Views\Category\Category.cshtml" />
+    <Content Include="Views\Playlist\Playlist.cshtml" />
+    <Content Include="Views\Artist\Details.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Artist\Create.cshtml" />
+    <Content Include="Views\Artist\Delete.cshtml" />
+    <Content Include="Views\Artist\Update.cshtml" />
+    <Content Include="Views\Artist\Artists.cshtml" />
+    <Content Include="Views\Song\Create.cshtml" />
+    <Content Include="Views\Song\Songs.cshtml" />
+    <Content Include="Views\Album\Create.cshtml" />
+    <Content Include="Views\Album\Details.cshtml" />
+    <Content Include="Views\Album\Albums.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\DbData\Classical\" />
+    <Folder Include="Content\DbData\Country\" />
+    <Folder Include="Content\DbData\Jazz\" />
+    <Folder Include="Content\DbData\Pop\" />
+    <Folder Include="Content\DbData\Rock\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Error\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UTMUSIC.BusinessLogic\UTMUSIC.BusinessLogic.csproj">
+      <Project>{68bed345-4aff-481f-970d-76c683507571}</Project>
+      <Name>UTMUSIC.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UTMUSIC.Domain\UTMUSIC.Domain.csproj">
+      <Project>{78d97b91-92fe-4cf6-bf9b-8bd15490d878}</Project>
+      <Name>UTMUSIC.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:7379/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\WavesurferBlazorWrapper.0.1.1\build\WavesurferBlazorWrapper.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WavesurferBlazorWrapper.0.1.1\build\WavesurferBlazorWrapper.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

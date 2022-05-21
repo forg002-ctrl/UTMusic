@@ -1,0 +1,31 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "34a59fe0-87a4-4253-a4e8-83fe0f6cb618": {
+      "ProjectGuid": "34a59fe0-87a4-4253-a4e8-83fe0f6cb618",
+      "DisplayName": "UTMUSIC.Web",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "68bed345-4aff-481f-970d-76c683507571": {
+      "ProjectGuid": "68bed345-4aff-481f-970d-76c683507571",
+      "DisplayName": "UTMUSIC.BusinessLogic",
+      "ColorIndex": 1
+    },
+    "78d97b91-92fe-4cf6-bf9b-8bd15490d878": {
+      "ProjectGuid": "78d97b91-92fe-4cf6-bf9b-8bd15490d878",
+      "DisplayName": "UTMUSIC.Domain",
+      "ColorIndex": 2
+    },
+    "cd6bfcba-db2b-4d48-9b2f-136c5e59aed6": {
+      "ProjectGuid": "cd6bfcba-db2b-4d48-9b2f-136c5e59aed6",
+      "DisplayName": "UTMUSIC.Helpers",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

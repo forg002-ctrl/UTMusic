@@ -1,0 +1,72 @@
+﻿@using System.Web.Optimization
+@model UTMUSIC.Web.Models.UserLogin
+
+@{
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "SignIn";
+}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UTMusic</title>
+    @Styles.Render("~/bundles/main/css")
+
+
+</head>
+<link href="Content/img/smlogo.ico" rel="shortcut icon" />
+<body class="align">
+    <a href=@Url.Action("Index", "Home") class="site-logo">
+        <img src=@Url.Content("~/Content/img/logo.png") alt="Logo" />
+    </a>
+
+    <div class="grid">
+        @Html.ValidationSummary(true)
+        @using (Html.BeginForm("SignIn", "Login", FormMethod.Post, new { @class = "form login" }))
+        {
+            @Html.AntiForgeryToken()
+        <div class="form__field_log">
+            <label for="login__username"><img src="@Url.Content("~/Content/img/login_register/username.png")" alt=""><span class="hidden">Username</span></label>
+            @Html.TextBoxFor(m => m.Credential, new
+            {
+                placeholder = "username",
+                title = "Please enter you username",
+                value = "",
+                name = "username",
+                id = "username",
+                @class = "form-control"
+            })
+        </div>
+
+        <div class="form__field_log">
+            <label for="login__password"><img src="@Url.Content("~/Content/img/login_register/password.png")" alt=""><span class="hidden">Password</span></label>
+            @Html.TextBoxFor(m => m.Password, new
+            {
+                @class = "form-control",
+                type = "password",
+                title = "Please enter your password",
+                placeholder = "******",
+                value = "",
+                name = "password",
+                id = "password",
+                autocomplete = "off"
+            })
+        </div>
+
+            <div class="form__field_log">
+                <input type="submit" value="Sign In">
+            </div>
+
+        }
+
+        <p class="text--center">
+            Not a member?
+            @Html.ActionLink("Sign Up now", "SignUp", "Login")
+        </p>
+    </div>
+
+</body>
+</html>

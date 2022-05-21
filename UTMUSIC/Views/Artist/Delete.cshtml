@@ -1,0 +1,67 @@
+﻿@model UTMUSIC.Web.Models.ArtistData
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container d-flex flex-column" style="margin-top: 100px">
+    <h4>Delete The Artist</h4>
+    <hr />
+    <dl class="dl-horizontal" style="display: block">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtistInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArtistInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoPath)
+        </dt>
+
+        <dd>
+            <div class="artist-details-form">
+                <img src="@Url.Content(Model.PhotoPath)" />
+            </div>
+        </dd>
+        
+        @if (Model.Songs != null)
+        {
+
+        }
+        
+        @if (Model.Albums != null)
+        {
+
+        }
+    </dl>
+    
+    <div class="d-flex justify-content-begin" style="margin-bottom: 20px">
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+
+            <div class="form__field">
+                <div class="col-md-offset-2 col-md-5">
+                    <input type="submit" value="Delete" class="button1" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

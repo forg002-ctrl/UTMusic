@@ -1,0 +1,64 @@
+﻿@model UTMUSIC.Web.Models.SongData
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    @using (Html.BeginForm("Create", "Song", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-horizontal">
+            <h4>Create New Song</h4>
+            <hr />
+
+            <dl class="dl-horizontal" style="display: block">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Artist.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Artist.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Artist.PhotoPath)
+                </dt>
+
+                <dd>
+                    <div class="row">
+                        <div class="artist-details-form">
+                            <img src="@Url.Content(Model.Artist.PhotoPath)" />
+                        </div>
+                    </div>
+                </dd>
+
+            </dl>
+
+            <div class="form__field">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form_field">
+                @Html.LabelFor(model => model.AudioPath, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.AudioPath, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
+                    @Html.ValidationMessageFor(model => model.AudioPath, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form__field">
+                <div class="col-md-offset-2 col-md-5">
+                    <input type="submit" value="Create" class="button1" />
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
